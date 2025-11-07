@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - WE School</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 35px;
+        }
+
+        .logo-text h1 {
+            color: #667eea;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo-text p {
+            color: #666;
+            font-size: 11px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #555;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #667eea;
+            border-radius: 2px;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 20px;
+            background: #f8f9ff;
+            border-radius: 25px;
+        }
+
+        .user-avatar {
+            font-size: 28px;
+        }
+
+        .user-name {
+            font-weight: 700;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 60px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: white;
+            border-radius: 30px;
+            padding: 80px 60px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-bottom: 50px;
+        }
+
+        .hero-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-section h1 {
+            font-size: 56px;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            color: #666;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Vision & Mission Section */
+        .vision-mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .vm-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .vm-card h2 {
+            font-size: 36px;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .vm-icon {
+            font-size: 45px;
+        }
+
+        .vm-card p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: white;
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-section h2 {
+            font-size: 42px;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: #f8f9ff;
+            transform: translateY(-5px);
+        }
+
+        .member-avatar {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .member-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .member-role {
+            font-size: 16px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .member-bio {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .hero-section {
+                padding: 50px 30px;
+            }
+
+            .hero-section h1 {
+                font-size: 36px;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+            .vision-mission {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation Bar -->
+  <nav>
+   <div class="logo-section">
+    <div class="logo-icon">
+     🎓
+    </div>
+    <div class="logo-text">
+     <h1>WE School</h1>
+     <p>Learn &amp; Grow</p>
+    </div>
+   </div>
+   <div class="nav-links"><a href="home.html">Home</a> <a href="courses.html">Courses</a> <a href="about.html" class="active">About</a> <a href="blog.html">Blog</a> <a href="booking.html">Booking</a> <a href="contact.html">Contact</a>
+   </div>
+   <div class="user-section">
+    <div class="user-info"><span class="user-avatar">👤</span> <span class="user-name" id="userName"></span>
+    </div><button class="logout-btn" onclick="handleLogout()">Logout</button>
+   </div>
+  </nav><!-- Main Content -->
+  <main class="main-content"><!-- Hero Section -->
+   <section class="hero-section">
+    <div class="hero-icon">
+     🏫
+    </div>
+    <h1>About WE School</h1>
+    <p>We are a leading educational institution dedicated to empowering students with knowledge, skills, and values that prepare them for success in an ever-changing world. Our commitment to excellence in education has made us a trusted choice for thousands of students and families.</p>
+   </section><!-- Stats Section -->
+   <section class="stats-section">
+    <div class="stat-card">
+     <div class="stat-icon">
+      👨‍🎓
+     </div>
+     <div class="stat-number">
+      5,000+
+     </div>
+     <div class="stat-label">
+      Students
+     </div>
+    </div>
+    <div class="stat-card">
+     <div class="stat-icon">
+      👨‍🏫
+     </div>
+     <div class="stat-number">
+      150+
+     </div>
+     <div class="stat-label">
+      Expert Teachers
+     </div>
+    </div>
+    <div class="stat-card">
+     <div class="stat-icon">
+      📚
+     </div>
+     <div class="stat-number">
+      200+
+     </div>
+     <div class="stat-label">
+      Courses
+     </div>
+    </div>
+    <div class="stat-card">
+     <div class="stat-icon">
+      🏆
+     </div>
+     <div class="stat-number">
+      98%
+     </div>
+     <div class="stat-label">
+      Success Rate
+     </div>
+    </div>
+   </section><!-- Vision & Mission -->
+   <section class="vision-mission">
+    <div class="vm-card">
+     <h2><span class="vm-icon">🎯</span> Our Vision</h2>
+     <p>To be the leading educational institution that inspires innovation, creativity, and lifelong learning. We envision a future where every student reaches their full potential and becomes a positive force in society.</p>
+    </div>
+    <div class="vm-card">
+     <h2><span class="vm-icon">🚀</span> Our Mission</h2>
+     <p>To provide high-quality education that combines academic excellence with character development. We strive to create a nurturing environment where students can explore, discover, and grow into confident, responsible global citizens.</p>
+    </div>
+   </section><!-- Team Section -->
+   <section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+     <div class="team-member">
+      <div class="member-avatar">
+       👨‍💼
+      </div>
+      <div class="member-name">
+       Dr. Ahmed Hassan
+      </div>
+      <div class="member-role">
+       Principal &amp; Founder
+      </div>
+      <div class="member-bio">
+       20+ years of experience in educational leadership and curriculum development.
+      </div>
+     </div>
+     <div class="team-member">
+      <div class="member-avatar">
+       👩‍🏫
+      </div>
+      <div class="member-name">
+       Sarah Mohamed
+      </div>
+      <div class="member-role">
+       Academic Director
+      </div>
+      <div class="member-bio">
+       Expert in modern teaching methodologies and student assessment strategies.
+      </div>
+     </div>
+     <div class="team-member">
+      <div class="member-avatar">
+       👨‍🔬
+      </div>
+      <div class="member-name">
+       Dr. Khaled Ali
+      </div>
+      <div class="member-role">
+       Head of Sciences
+      </div>
+      <div class="member-bio">
+       PhD in Physics with a passion for making science accessible and exciting.
+      </div>
+     </div>
+     <div class="team-member">
+      <div class="member-avatar">
+       👩‍💻
+      </div>
+      <div class="member-name">
+       Nour Ibrahim
+      </div>
+      <div class="member-role">
+       Technology Coordinator
+      </div>
+      <div class="member-bio">
+       Integrating cutting-edge technology into the learning experience.
+      </div>
+     </div>
+     <div class="team-member">
+      <div class="member-avatar">
+       👨‍🎨
+      </div>
+      <div class="member-name">
+       Omar Youssef
+      </div>
+      <div class="member-role">
+       Arts &amp; Culture Director
+      </div>
+      <div class="member-bio">
+       Fostering creativity and cultural appreciation through diverse programs.
+      </div>
+     </div>
+     <div class="team-member">
+      <div class="member-avatar">
+       👩‍⚕️
+      </div>
+      <div class="member-name">
+       Dr. Mona Samir
+      </div>
+      <div class="member-role">
+       Student Wellness Advisor
+      </div>
+      <div class="member-bio">
+       Dedicated to supporting student mental health and overall well-being.
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <script>
+        // Load user name
+        window.addEventListener('DOMContentLoaded', () => {
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            const userName = userData.firstName || '';
+            document.getElementById('userName').textContent = userName;
+        });
+
+        function handleLogout() {
+            const confirmLogout = document.createElement('div');
+            confirmLogout.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                text-align: center;
+            `;
+            
+            confirmLogout.innerHTML = `
+                <h2 style="color: #667eea; margin-bottom: 20px; font-size: 24px;">Confirm Logout</h2>
+                <p style="color: #666; margin-bottom: 30px; font-size: 16px;">Are you sure you want to logout?</p>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button onclick="this.parentElement.parentElement.remove()" style="padding: 12px 30px; background: #e0e0e0; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">Cancel</button>
+                    <button onclick="confirmLogoutAction()" style="padding: 12px 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">Logout</button>
+                </div>
+            `;
+            
+            document.body.appendChild(confirmLogout);
+        }
+
+        function confirmLogoutAction() {
+            localStorage.removeItem('userData');
+            window.location.href = 'index.html';
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99ac68b297cb11a6',t:'MTc2MjUxNDA4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
